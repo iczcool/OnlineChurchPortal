@@ -1,0 +1,41 @@
+﻿@model OnlineWebPortal.Models.Enquiry
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h1>Enquiry Detail</h1>
+
+<div>
+    <h4>Enquiry</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EnquiryDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EnquiryDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EnquiryType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EnquiryType)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RegUser)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RegUser)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EnquiryBody)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EnquiryBody)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-controller="Enquiry" asp-action="EnquiryList">Back to List</a>
+</div>

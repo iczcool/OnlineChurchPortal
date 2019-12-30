@@ -1,0 +1,34 @@
+﻿@model IEnumerable<OnlineWebPortal.Models.Enquiry>
+@{
+    ViewData["Title"] = "Enquiries Page";
+}
+    <h1>List of enquiries</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Enquiry Type</th>
+                <th>Date</th>
+                <th>Sender</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var enquiry in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => enquiry.ID)</td>
+                    <td>@Html.DisplayFor(modelItem => enquiry.EnquiryType)</td>
+                    <td>@Html.DisplayFor(modelItem => enquiry.EnquiryDate)</td>
+                    <td>@Html.DisplayFor(modelItem => enquiry.RegUser)</td>
+                    <td>
+                        <a asp-controller="Enquiry" asp-action="Detail" asp-route-id="@enquiry.ID">Detail</a> |
+                        <a asp-controller="Enquiry" asp-action="Delete" asp-route-id="@enquiry.ID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div>
+        <a asp-controller="Enquiry" asp-action="CreateEnquiry">Create Enquiry</a> |
+        <a asp-controller="Home" asp-action="Portal">Dashboard</a>
+    </div>

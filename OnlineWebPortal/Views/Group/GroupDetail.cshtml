@@ -1,0 +1,60 @@
+﻿@model OnlineWebPortal.Models.ChurchGroup
+@{
+    ViewData["Title"] = "Group Detail";
+}
+<style>
+</style>
+<div class="">
+    <h1>Welcome to <b>@Html.DisplayFor(m => m.GroupName)</b></h1>
+    <div class="row">
+        <div class="col-12">
+            <table class="table">
+                <tr>
+                    <td><b>Description</b></td>
+                    <td>@Html.DisplayFor(m => m.GroupDescription)</td>
+                </tr>
+                <tr>
+                    <td><b>Age range</b></td>
+                    <td>18 - 99</td>
+                </tr>
+                <tr>
+                    <td><b>Meets on</b></td>
+                    <td>every @Html.DisplayFor(m => m.MeetingDay) effective 4/11/2017 @Html.DisplayFor(m => m.StartTime) PM to @Html.DisplayFor(m => m.EndTime)</td>
+                </tr>
+                <tr>
+                    <td><b>Location</b></td>
+                    <td>
+                        @Html.DisplayFor(m => m.Location)
+                        <a href="#">View large map</a>
+                    </td>
+                </tr>
+            </table>
+            <table class="table col-4 text-center border-dark-1">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Leader</th>
+                        <th>Profile</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <img src="#" alt="" />
+                            <p>@Html.DisplayFor(m => m.LeaderName)</p>
+                        </td>
+                        <td>
+                            <p>@Html.DisplayFor(m => m.LeaderProfile)</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table><br /><br />
+            <p>Interested in the group? <a asp-controller="Group" asp-action="AddMember" asp-route-id="@Model.ID">Join Now</a></p><br />
+        </div>
+        @*<div class="col-2"><a asp-controller="Group" asp-action="GroupMembers" asp-route-id="@Model.ID">List of members</a></div>
+        <div class="col-3"><a asp-controller="Group" asp-action="AddMember" asp-route-id="@Model.ID">Add a member to group</a></div>*@
+        <a asp-controller="Group" asp-action="GroupMembers" asp-route-id="@Model.ID">List of members </a>&nbsp;|&nbsp;
+        <a asp-controller="Group" asp-action="AddMember" asp-route-id="@Model.ID"> Add a member</a>&nbsp;|&nbsp;
+        <a asp-controller="Group" asp-action="FindGroup" asp-route-id="@Model.ID">Back to groups</a>&nbsp;|&nbsp;
+        <a asp-controller="Home" asp-action="Portal" asp-route-id="@Model.ID">Dashboard</a>
+    </div>
+</div>

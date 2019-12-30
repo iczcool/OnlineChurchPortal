@@ -1,0 +1,262 @@
+﻿@model OnlineWebPortal.Models.RegUser
+@{
+    ViewData["Title"] = "Portal Page";
+}
+
+
+    <style>
+
+        .tile-nav span {
+            font-size: 3em;
+        }
+
+        
+
+        .tile-nav {
+            position:relative;
+            background: transparent;
+            width: 100%;
+            min-height: 80px;
+            padding:0;
+            text-align: center;
+        }
+        .tile-nav li {
+            position:relative;
+            display: inline-block;
+            width: 30%;
+            margin: 0 100px;
+            padding: 0;
+            border: 6px solid white;
+        }
+        .tile-nav li:hover {
+            background:#ffffff;
+        }
+         .tile-nav li a{
+             color:#FFB90F;
+             margin: 100px 0;
+         }
+         .tile-nav p {
+            font-size: 1.1em;
+            color:#aaaaaa;
+            color:#555555;
+        }
+         .tile-nav p:hover {        
+            color:#808080;
+        }
+            .tile-nav li a:hover {
+                text-decoration: none;
+                color:darkorange;
+
+            }
+        #verse{
+            position:relative;
+            background: ;
+            margin: 40px 0;
+            padding:0 80px;
+        }
+
+
+            /*// Small devices (landscape phones, 576px and up)*/
+        @@media (max-width: 576px) {
+             h1{
+                    font-size:2.2em;
+                    font-weight:normal;
+                    text-align:center;
+                    margin-bottom: 20px;
+                }
+              #verse{
+                    position:relative;
+                    background: ;
+                    margin: 40px 0;
+                    padding:0 30px;
+                }
+                    .tile-nav {
+                        position:relative;
+                        background: transparent;
+                        width: 100%;
+                        min-height: 80px;
+                        margin:0;
+                        padding:0;
+                        /*text-align: center;*/
+                    }
+
+                    .tile-nav li {
+                        position:relative;
+                        display: inline-block;
+                        width: 50%;
+                        height:140px;
+                        margin: 0 auto;
+                        margin-left: -4.6px;
+                        padding: 0;
+                        /*text-align:center;*/
+                    }
+                    .tile-nav li a {
+                        position:absolute;
+                        width:100%;
+                        height:140px;
+                        /*text-align:center;*/
+
+                        margin:0;
+                        left:0;
+                        padding:0;
+                    }
+        }
+            @@media (min-width: 576px) {
+                .heading{
+                    font-size:2.2em;
+                    font-weight:lighter;
+                    text-align:center;
+                    margin-bottom: 20px;
+                }
+                    .tile-nav {
+                        position:relative;
+                        background: transparent;
+                        width: 100%;
+                        min-height: 80px;
+                        margin:0;
+                        padding:0;
+                        text-align: center;
+                    }
+
+                    .tile-nav li {
+                        position:relative;
+                        display: inline-block;
+                        width: 50%;
+                        height:140px;
+                        margin: 0 auto;
+                        margin-left: -4.6px;
+                        padding: 0;
+                        text-align:center;
+                    }
+                    .tile-nav li a {
+                        position:absolute;
+                        width:100%;
+                        height:140px;
+                        text-align:center;
+
+                        margin:0;
+                        left:0;
+                        padding:0;
+                    }
+            }
+
+            /*// Medium devices (tablets, 768px and up)*/
+            @@media (min-width: 768px) {
+
+            }
+
+            /*// Large devices (desktops, 992px and up)*/
+            @@media (min-width: 992px) {
+                .heading{
+                    font-size:2.4em;
+                    font-weight:lighter;
+                    text-align:center;
+                    margin-bottom: 20px;
+                }
+                .tile-nav span {
+                    font-size: 4em;
+                }
+
+                .tile-nav p {
+                    font-size: 1.2em;
+                }
+                    .tile-nav li a {
+                        position:absolute;
+                        width:100%;
+                        height:140px;
+                        text-align:center;
+
+                        margin:0;
+                        left:0;
+                        padding:0;
+                    }
+            }
+
+            /*// Extra large devices (large desktops, 1200px and up)*/
+            @@media (min-width: 1200px) {
+            }
+    </style>
+   
+        <h1>Welcome to your portal, @User.Identity.Name</h1>
+        
+
+        
+            <div id="verse" class="">
+                <p>
+                    <i>
+                        "For the wrath of God is revealed from heaven against all ungodliness and
+                        unrighteousness of men, who by their unrighteousness suppress the truth. For what can be known about God
+                        is plain to them, because God has shown it to them. For his invisible attributes, namely, his eternal
+                        power and divine nature, have been clearly perceived, ever since the creation of the world, in the things
+                        that have been made. So they are without excuse."
+                    </i>
+                    <b>  Romans 1:18-20</b>
+                </p>
+            </div>
+
+        @if (TempData["message"] != null)
+        {
+            <p class="alert alert-success alert-dismissible fade show text-center">@TempData["message"]</p>
+        }
+        <div>@ViewData["message"]</div>
+                <div class="tile-nav col-sm-12">
+                    <ul>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="tile-1">
+                                <a asp-controller="User" asp-action="Users">
+                                    <span><i class="fa fa-users"></i></span>
+                                    <p>List Of Members</p>
+                                </a>
+                            </li>
+                         }
+                        <li class="tile-2">
+                            <a asp-controller="User" asp-action="UserProfile" asp-route-id="@Model.ID">
+                                <span><i class="fa fa-user"></i></span>
+                                <p>Your Profile</p>
+                            </a>
+                        </li>
+                        <li class="tile-3">
+                            <a asp-controller="Group" asp-action="FindGroup">
+                                <span><i class="fa fa-search"></i></span>
+                                <p>Church Groups</p>
+                            </a>
+                        </li>
+                        <li class="tile-4">
+                            <a asp-controller="Group" asp-action="UserChurchGroups" asp-route-id="@Model.ID">
+                                <span><i class="fa fa-trophy"></i></span>
+                                <p>Your Groups</p>
+                            </a>
+                        </li>
+                        <li class="tile-5">
+                            <a asp-controller="Giving" asp-action="OnlineGiving" asp-route-id="@Model.ID">
+                                <span><i class="fas fa-hand-holding-usd"></i></span>
+                                <p>Giving</p>
+                            </a>
+                        </li>
+                        <li class="tile-6">
+                            <a asp-controller="Enquiry" asp-action="CreateEnquiry" asp-route-id="@Model.ID">
+                                <span><i class="fa fa-envelope"></i></span>
+                                <p>Enquiry</p>
+                            </a>
+                        </li>
+
+
+                        <li class="tile-6">
+                            <a asp-controller="Event" asp-action="EventList">
+                                <span><i class="fas fa-calendar-alt"></i></span>
+                                <p>Events</p>
+                            </a>
+                        </li>
+                        <li class="tile-6">
+                            <a asp-controller="" asp-action="" asp-route-id="@Model.ID">
+                                <span><i class="fa fa-church"></i></span>
+                                <p>Ministries</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+
+               

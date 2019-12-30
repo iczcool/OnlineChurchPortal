@@ -1,0 +1,84 @@
+﻿@model OnlineWebPortal.Models.RegUser
+@{ 
+    ViewData["Title"] = "Profile Page";
+}
+<style>
+    .information{
+        text-align: left;
+        background: #dbdddd;
+        margin: 0 auto;
+    }
+    .profile-image li{
+        display: block;
+    }
+    .information li{
+        list-style: none;
+        padding: 10px 0;
+    }
+
+    /*// Small devices (landscape phones, 576px and up)*/
+    @@media (min-width: 576px) {
+    }
+
+    /*// Medium devices (tablets, 768px and up)*/
+    @@media (min-width: 768px) {
+    }
+
+    /*// Large devices (desktops, 992px and up)*/
+    @@media (min-width: 992px) {
+    }
+
+    /*// Extra large devices (large desktops, 1200px and up)*/
+    @@media (min-width: 1200px) {
+    }
+</style>
+<div class="row content">
+    <h1 class="heading col-12">Your Profile</h1>
+    <div class="information col-lg-7 col-md-12 col-sm-12" style="margin-bottom: 30px;">
+        <ul>
+            <li>
+                <ul class="profile-image">
+                    @if (Model.Sex == "M")
+                    {
+                        <li><img src="~/img/man.jpg" alt="Male Logo" width="20%" height="20%" /></li>
+                    }
+                    @if (Model.Sex == "F")
+                    {
+                        <li><img src="~/img/woman.jpg" alt="Female Logo" width="20%" height="20%" /></li>
+                    }
+                    <li><h2>@Model.FirstName @Model.LastName</h2></li>
+                </ul>
+            </li>
+            <li><b>Date Of Birth</b> @Model.DateOFBirth</li>
+            <li><b>Marital Status</b> @Model.MaritalStatus</li>
+            <li><b>Gender</b> @Model.Sex</li>
+            <li><b>MembershipType</b> @Model.MemType</li>
+            <li><b>Date Of Membership</b> @Model.DateOfMembership</li>
+        </ul>
+        <ul>
+            <p>Contact Information</p>
+            <li><b>Phone Number</b> @Model.PhoneNumber</li>
+            <li><b>Email</b>  @Model.Email</li>
+            <li><b>Home Address</b>  @Model.Address</li>
+        </ul>
+    </div>
+    <div class="information col-lg-4 col-md-12 col-sm-12" style="margin-bottom: 30px;">
+        <ul>
+            <li><h4>Actions</h4></li>
+            <li><a asp-controller="Account" asp-action="EditAccount" asp-route-id="@Model.ID">Update Profile</a></li>
+            @*<li><a asp-controller="" asp-action="" asp-route-id="@Model.ID">Change Username/Password</a></li>*@
+            @if (User.IsInRole("Admin"))
+            {
+                <li><a asp-controller="Account" asp-action="Register">Add a member</a></li>}
+        </ul><br /><br />
+        <div>
+            <a asp-controller="Group" asp-action="UserChurchGroups" asp-route-id="@Model.ID">My Church Groups</a>
+        </div>
+    </div>
+
+    <hr />
+    <div class="content-nav">
+        <a asp-controller="Home" asp-action="Portal">Dashboard</a>&nbsp;|&nbsp;<a asp-controller="User" asp-action="Users">Back to list</a>
+    </div>
+</div>
+

@@ -1,0 +1,59 @@
+﻿@model OnlineWebPortal.Models.Enquiry
+@{
+    ViewData["Title"] = "Enquiry Page";
+}
+    <style>
+        textarea{
+            width: 100%;
+            height: 180px;
+        }
+    </style>
+
+
+<div class="content">
+    <div class="row">
+        <div class="col-12">
+            <h1>Make An Enquiry</h1>
+            <form asp-action="CreateEnquiry" asp-controller="Enquiry" method="post" class="form">
+                <div class="category-area row col-12">
+                    @if (TempData.ContainsKey("successMessage"))
+                    {
+                        <p class="col-12 alert alert-success alert-dismissible fade show text-center">@TempData["successMessage"]</p>
+                    }
+                    @if (TempData.ContainsKey("failMessage"))
+                    {
+                        <p class="col-12 alert alert-danger alert-dismissible fade show text-center">@TempData["failMessage"]</p>
+                    }
+
+                    <div class="row col-lg-6 col-md-6 col-sm-12">
+                        <div class="col-3 col-sm-6"><p><b>Choose Enquiry..</b></p></div>
+                        <div class="col-3 col-sm-6">
+                            <select asp-for="EnquiryType" class="form-control-sm">
+                                <option value="None"><b>Enquiry Type</b></option>
+                                <option value="Prayer Request">Prayer Request</option>
+                                <option value="Membership Query">Membership Query</option>
+                                <option value="General Enquiry">General Enquiry</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <input asp-for="EnquiryDate" value="@DateTime.Now" type="hidden" />
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <textarea asp-for="EnquiryBody" type="text"></textarea>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <input asp-for="RegUser" value="@User.Identity.Name" type="hidden" />
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-12 pull-left">
+                        <button id="" type="submit" class="btn btn-secondary">Send</button>
+                    </div>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-controller="Enquiry" asp-action="EnquiryList">List of enquiries</a>
+                    }
+                </div>                
+            </form>
+        </div>
+    </div>
+</div>

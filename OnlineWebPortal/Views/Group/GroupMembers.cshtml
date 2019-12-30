@@ -1,0 +1,27 @@
+﻿@model IEnumerable<OnlineWebPortal.Models.RegUserChurchGroup>
+@{
+    ViewData["Title"] = "Group Members";
+}
+    <h1>Members</h1>
+<table class="table table-bordered table-sm">
+    <thead class="thead-light">
+        <tr>
+            <th>Member Name</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => (user.RegUsers.FirstName))&nbsp;&nbsp;&nbsp;@Html.DisplayFor(modelItem => (user.RegUsers.LastName))</td>
+                <td>Active</td>
+                @if (User.IsInRole("Admin"))
+                {
+                    <td><a asp-controller="Group" asp-action="DeleteMember" asp-route-id="@user.ChurchGroupID">Delete</a></td>
+}
+            </tr>
+        }
+    </tbody>
+</table>

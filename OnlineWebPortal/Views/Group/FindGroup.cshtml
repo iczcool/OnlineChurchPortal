@@ -1,0 +1,60 @@
+﻿@model IList<OnlineWebPortal.Models.ChurchGroup>
+@{
+    ViewData["Title"] = "Church Groups";
+}
+<style>
+</style>
+<div class="content">
+    <h1>Church Groups</h1>
+    <div class="text-info"><p>@ViewData["message"]</p></div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="row">
+                <div class="col-4 col-sm-6 col-xs-6"><p><b>@Model.Count Groups found</b></p></div>
+                <div class="col-2 col-sm-6 col-xs-6">
+                    @if (User.IsInRole("Admin"))
+                    {<a asp-controller="Group" asp-action="CreateGroup">Add a group</a>}
+                </div>
+            </div>
+        <table class="table table-responsive">
+            <thead class="thead-light">
+                <tr>
+                    <th>Group</th>
+                    <th>Location</th>
+                    <th>Meets</th>
+                    <th>Children</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var group in Model)
+                {
+                    <tr>
+                        <td><a asp-controller="Group" asp-action="GroupDetail" asp-route-id="@group.ID">@group.GroupName</a></td>
+
+                        <td>@Html.DisplayFor(m => group.Location)</td>
+                        <td>@Html.DisplayFor(m => group.MeetingDay)</td>
+                        <td>Yes</td>
+                        <td>@Html.DisplayFor(m => group.StartTime)</td>
+                        <td>@Html.DisplayFor(m => group.EndTime)</td>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <td><a asp-controller="Group" asp-action="EditGroup" asp-route-id="@group.ID">Edit</a></td>
+                            <td><a asp-controller="Group" asp-action="DeleteGroup" asp-route-id="@group.ID">Delete</a></td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<hr />
+<div class="content-nav">
+    <a asp-controller="Home" asp-action="Portal">Dashboard</a>
+</div>
+</div>

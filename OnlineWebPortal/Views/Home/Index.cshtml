@@ -1,0 +1,131 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+    <style>
+        .link-nav li{
+            list-style:none;
+        }
+        
+        .btn{
+            width: 20%;
+        }
+
+        /*******Main area******/
+        .info{
+            min-height: 200px;
+            background: lightgrey;
+            text-align:initial;
+            padding: 0;
+        }
+        .banner{
+            background:#b6ff00;
+            background: url('/img/banner3.jpg');
+            background-position: 50% 50%;
+            background-size: cover;
+            height: 120px;
+            margin-bottom: 24px;
+        }
+
+        /*******Links******/
+        .link-nav{
+            background:#e0dfdf;
+            margin: 0 0 0 20px;
+            padding: 0;
+        }
+        .link-nav h1{
+            background:#f3b216;
+            color:#ffffff;
+            text-transform: uppercase;
+            font-size: 2em;
+            padding: 10px 0;
+        }
+        .link-nav ul{
+            background: #e0dfdf;
+            padding: 20px;
+        }
+        .link-nav li{
+            padding: 8px 0;
+        }
+
+        /*// Small devices (landscape phones, 576px and up)*/
+        @@media (min-width: 576px) {
+            .link-nav{
+                display:none;
+            }
+            .btn{
+            width: 30%;
+        }
+        }
+
+        /*// Medium devices (tablets, 768px and up)*/
+        @@media (min-width: 768px) {
+            .info{
+                width:100%;
+            }
+             .link-nav{
+                display:none;
+            }
+        }
+
+        /*// Large devices (desktops, 992px and up)*/
+        @@media (min-width: 992px) {
+            .link-nav{
+                display:block;
+            }
+        }
+
+        /*// Extra large devices (large desktops, 1200px and up)*/
+        @@media (min-width: 1200px) {
+            .link-nav{
+                display:block;
+            }
+        }
+    </style>
+
+
+
+
+
+
+<div class="content text-center row">  
+    <div class="col-lg-8 col-md-12 col-sm-12 info">
+        <div class="banner col-12"></div>
+        <h1 class="display-4" style="text-transform:uppercase; font-size:2em; letter-spacing: 1.4px;">Member Web Portal</h1>
+        <p>The REPLIB Member Web Portal provides another way for members to connect with the church.  There are many things to do within the portal:</p>
+        <ul>
+            <li>View groups you are a part of and manage groups you lead</li>
+            <li>Manage online giving</li>
+            <li>View/print contribution statements for your household</li>
+            <li>Edit your profile (change of address, phone number, email address, upload a picture and more)</li>
+        </ul>
+        <p>There are so many benefits to having an account. Click the button below to register your account!</p>
+
+
+
+
+        <div class="button-area">
+            <p><a class="btn btn-secondary" asp-controller="Account" asp-action="Register">REGISTER</a><br /></p>
+            <p>Already have an account?</p>
+            <p><a class="btn btn-secondary" asp-controller="Account" asp-action="Login">LOGIN</a></p>
+        </div>
+        <div class="">
+            <p>Pastors, Staff & Leaders, click <a asp-controller="AdminAccount" asp-action="Login">HERE</a> to access the Admin Area.</p>
+        </div>
+    </div>
+    <div class="link-nav col-lg-3 col-md-3 col-sm-12">
+        <h1>Connect</h1>
+        <ul>
+            <li><a asp-controller="Account" asp-action="Register">Become a Member</a></li>
+            <li><a href="#">REPLIB Experience</a></li>
+            <li>
+                <a asp-controller="Group" asp-action="FindGroup">Dream Group</a>
+            </li>
+            <li>
+                <a href="#">Water Baptism</a>
+            </li>
+            <li>
+                <a asp-controller="Home" asp-action="Portal">Member Web Portal</a>
+            </li>
+        </ul>
+    </div>
+</div>

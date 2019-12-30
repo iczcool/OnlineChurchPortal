@@ -1,0 +1,36 @@
+﻿@model IEnumerable<OnlineWebPortal.Models.Payment>
+@{
+    ViewData["Title"] = "Payment Report";
+}
+
+    <div class="row">
+        <div class="col-12">
+            <h1 class="col-12 text-center">Payment Report</h1>
+            <table class="table table-bordered table-responsive-md">
+                <thead>
+                    <tr>
+                        <th>Payment ID</th>
+                        <th>Member</th>
+                        <th>Payment Type</th>
+                        <th>Date</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var payment in Model)
+                    {
+                    <tr>
+                        <td>@payment.ID</td>
+                        <td>@payment.RegUser.FirstName @payment.RegUser.LastName</td>
+                        <td>@payment.PaymentType</td>
+                        <td>@payment.PaymentDate</td>
+                        <td>£ @payment.Amount</td>
+                        <td><a class="w-50 h-50" href="#"><span class="w-50 h-50"><i class="fas fa-download w-50 h-50"></i></span></a></td>
+                    </tr>
+                    }
+                    </tbody>
+                </table><br />
+                        <a class="btn btn-link" asp-controller="Giving" asp-action="OnlineGiving">Return</a>
+
+        </div>
+    </div>

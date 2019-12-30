@@ -1,0 +1,24 @@
+﻿@model IEnumerable<OnlineWebPortal.Models.Event>
+@{
+    ViewData["Title"] = "Events Page";
+}
+<h1>Upcoming events</h1>
+<table class="table">
+    @if (User.IsInRole("Admin")) { <a asp-controller="Event" asp-action="CreateEvent">Add an event</a> }
+    <tbody>
+        @foreach (var myEvent in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => myEvent.EventDate)</td>
+                <td>@Html.DisplayFor(modelItem => myEvent.EventName)</td>
+                <td>
+                    <a asp-controller="Event" asp-action="EventDetail" asp-route-id="@myEvent.ID">Detail</a> |
+                    <a asp-controller="Event" asp-action="Delete" asp-route-id="@myEvent.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-controller="Home" asp-action="Portal">Back to Dashboard</a>
+</div>

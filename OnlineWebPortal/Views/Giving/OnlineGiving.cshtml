@@ -1,0 +1,27 @@
+﻿@model OnlineWebPortal.Models.RegUser
+@*@{
+    ViewData["Title"] = "Online Giving";
+}*@
+<style>
+    .btn{
+        width:25%;
+    }
+    @@media (max-width: 575.98px) {
+        .btn{
+            width:80%;
+        }
+    }
+</style>
+<h1>Online Giving</h1>
+<div class="">
+    <div class="col-12 col-sm-12">
+        <div>
+            <p><a asp-controller="Giving" asp-action="CreateGiving" class="btn btn-secondary">Give Now</a></p>
+            <p><a asp-controller="Giving" asp-action="ScheduleGiving" class="btn btn-secondary">Schedule Giving</a></p>
+            <p><a asp-controller="Giving" asp-action="Statement" asp-route-id="" class="btn btn-secondary">Download Statement</a></p>
+            <p><a asp-controller="Giving" asp-action="ListOfStatements" class="btn btn-secondary">List Of Statements</a></p>
+
+        </div>
+    </div>
+</div>
+

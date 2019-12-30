@@ -1,0 +1,140 @@
+﻿@model OnlineWebPortal.ViewModels.RegisterViewModel
+@{
+    ViewData["Title"] = "Register Page";
+}
+    <style>
+        .form-wrapper{
+            margin: 0 auto;
+            width: 50%;
+        }
+
+         /*// Small devices (landscape phones, 576px and up)*/
+        @@media (max-width: 576px){
+            .form-wrapper{
+                width: 100%;
+                margin: 0 auto;
+            }
+        }
+        @@media (min-width: 576px) {
+            h3{
+                font-size:1.3em;
+            }
+            .form-wrapper{
+                width: 80%;
+                margin: 0 auto;
+            }
+        }
+
+        /*// Medium devices (tablets, 768px and up)*/
+        @@media (min-width: 768px) {
+            .form-wrapper{
+            width: 70%;
+            margin: 0 auto;
+        }
+        }
+
+        /*// Large devices (desktops, 992px and up)*/
+        @@media (min-width: 992px) {.form-wrapper{
+            width: 50%;
+            margin: 0 auto;
+        }
+        }
+
+        /*// Extra large devices (large desktops, 1200px and up)*/
+        @@media (min-width: 1200px) {
+            .form-wrapper{
+            width: 45%;
+            margin: 0 auto;
+        }
+        }
+    </style>
+
+
+    <h3 class="display-10 col-12">Please Create Your Registration</h3>
+    <div class="form-wrapper row">
+        @*<p class="alert alert-danger alert-dismissible fade show text-center">@TempData["message"]</p>*@
+            <div class="col-sm-12">
+                <form asp-controller="Account" asp-action="Register" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+                    <div class="form-group">
+                        @*<label asp-for="FirstName" class="control-label">FirstName</label>
+                        <input asp-for="FirstName" class="form-control" />*@
+
+                        <label asp-for="FirstName" class="control-label">@Html.DisplayFor(modelItem => Model.FirstName)</label>
+                        <input asp-for="FirstName" class="form-control" />
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <label asp-for="LastName" class="control-label">@Html.DisplayFor(modelItem => Model.LastName)</label>
+                        <input asp-for="LastName" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Username" class="control-label">@Html.DisplayFor(modelItem => Model.Username)</label>
+                        <input asp-for="Username" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label">@Html.DisplayFor(modelItem => Model.Password)</label>
+                        <input asp-for="Password" type="password" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ConfirmPassword" class="control-label">@Html.DisplayFor(modelItem => Model.ConfirmPassword)</label>
+                        <input asp-for="ConfirmPassword" type="password" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <select asp-for="Sex" class="form-control-sm">
+                            <option value="None"><b>Sex</b></option>
+                            <option value="M">M</option>
+                            <option value="F">F</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select asp-for="MaritalStatus" class="form-control-sm">
+                            <option value="None"><b>Marital Status</b></option>
+                            <option value="Married">Married</option>
+                            <option value="Single">Single</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DateOFBirth" class="control-label">@Html.DisplayFor(modelItem => Model.DateOFBirth)</label>
+                        <input asp-for="DateOFBirth" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PhoneNumber" class="control-label">@Html.DisplayFor(modelItem => Model.PhoneNumber)</label>
+                        <input asp-for="PhoneNumber" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label">Email</label>
+                        <input asp-for="Email" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <select asp-for="MemType" class="form-control-sm">
+                            <option value="None"><b>Membership Type</b></option>
+                            <option value="Home">Home</option>
+                            <option value="Distant">Distant</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DateOfMembership" class="control-label">@Html.DisplayFor(modelItem => Model.DateOfMembership)</label>
+                        <input asp-for="DateOfMembership" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <input asp-controller="" asp-action="" class="btn btn-secondary" type="submit" value="Register" />
+                    </div>
+
+                    <div asp-validation-summary="All"></div>
+
+                    <br />
+                    <div>@ViewData["message"]</div>
+
+                    <div class="col-md-8">
+                        <a asp-controller="Home" asp-action="Index">Take Me Home</a>
+                    </div>
+                </form>
+            </div>
+    </div>
+

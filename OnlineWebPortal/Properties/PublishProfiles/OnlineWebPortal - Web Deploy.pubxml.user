@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAu3H70YaC8kqA4bvIWIMrUAAAAAACAAAAAAAQZgAAAAEAACAAAAAxrr2WpS09Ke4+qjh+ksC4j1X+fzm3R70DgXbksexI8gAAAAAOgAAAAAIAACAAAAAyjwIZnVrErfA17SIaBdfYYw06kqyFm+EGEzGyfydWeoAAAADeRBbORbD/H+Zn0AIYJcbjtP2/ytWB4lQO8xnJcDi8YPoEjtPVV3wt6Vk6JvliRA4X1Aort6hsYnWCQjtBTFJwmcXPXeSelv8qeAZ1pmP2tyBddZ60TZQ58UlGlOVXBLG3kboFOZ/qKhq5GVM1lyg/28xOUqjgCoxR0aMg8ZmFYEAAAACuw2S4jqjcFMc/Bl+akvgAhUb9ATCsPiS+FcbzZX+yWsDsE36ch2cs248cWQDeTbY10unS+lY1gZMjU1jTgW7/</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Data Source=tcp:onlinewebportaldbserver.database.windows.net,1433%3bInitial Catalog=OnlineWebPortal_db%3bUser Id=iczcool%40onlinewebportaldbserver%3bPassword=Goldbook497#</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="OnlineWebPortal.Data.OnlineWebPortalDbContext">
+      <Value>Data Source=tcp:onlinewebportaldbserver.database.windows.net,1433%3bInitial Catalog=OnlineWebPortal_db%3bUser Id=iczcool%40onlinewebportaldbserver%3bPassword=Goldbook497#</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

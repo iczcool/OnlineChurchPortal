@@ -1,0 +1,82 @@
+﻿@model OnlineWebPortal.Paging.Paging<OnlineWebPortal.Models.RegUser>
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewData["Title"] = "Members";
+}
+
+<div class="content">
+    <h1>Members</h1>
+    @if (TempData["message"] != null)
+    {
+        <p class="alert alert-success alert-dismissible fade show text-center">@TempData["message"]</p>
+    }
+    <div class="row">
+        <div class="col-6">
+            @using (Html.BeginForm())
+            {
+                <p>
+                    Find Member by First Name: @Html.TextBox("SearchString")
+                    <input type="submit" value="Search" />
+                </p>
+            }
+        </div>
+        <div class="col-2"><a asp-controller="Account" asp-action="Register">Add a member</a></div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="width:30%;">
+                    @Html.ActionLink("First Name", "Users", new { sortField = "FirstName", currentSortField = ViewBag.SortField, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th style="width:30%;">
+                    @Html.ActionLink("Last Name", "Users", new { sortField = "LastName", currentSortField = ViewBag.SortField, currentSortOrder = ViewBag.SortOrder })
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => user.FirstName)</td>
+                    <td>@Html.DisplayFor(modelItem => user.LastName)</td>
+                    <td>
+                        <a asp-controller="User" asp-action="UserProfile" asp-route-id="@user.ID">Detail</a> |
+                        <a asp-controller="Account" asp-action="DeleteUserAccount" asp-route-id="@user.ID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+    <br />
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+        var numOfPages = Model.NumOfPages;
+        var currentPageNum = Model.PageIndex;
+    }
+
+    <a asp-action="Index"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNo="@(Model.PageIndex - 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-default @prevDisabled">
+        Previous
+    </a>
+    <a asp-action="Index"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-pageNo="@(Model.PageIndex + 1)"
+       asp-route-currentFilter="@ViewData["CurrentFilter"]"
+       class="btn btn-default @nextDisabled">
+        Next
+    </a>
+    <span>
+        Page No : @currentPageNum of @numOfPages
+    </span>
+    <hr />
+    <div class="content-nav">
+        <a asp-controller="Home" asp-action="Portal" asp-route-id="">Dashboard</a>
+    </div>
+</div>

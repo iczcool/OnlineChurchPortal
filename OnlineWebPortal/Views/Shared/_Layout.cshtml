@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - OnlineWebPortal</title>
+
+    <environment include="Development">
+        @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />*@
+        <link rel="stylesheet" href="~/fonts/fontawesome-free-5.11.2-web/css/all.min.css" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/normalize.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+              crossorigin="anonymous"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
+        <link rel="stylesheet" href="~/fonts/fontawesome-free-5.11.2-web/css/all.min.css" />
+    </environment>
+            <link rel="stylesheet" href="~/css/Site.css" />
+        </head>
+        <body>
+            
+            <div class="wrapper">
+                <header>
+                    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-transparent border-none box-shadow mb-3">
+                        <div class="container">
+                            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                                <img src="~/img/REPLIB-LOGO.png" width="60" height="60" alt="REPLIB Logo" />
+                            </a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                                    aria-expanded="false" aria-label="Toggle navigation" style="background:yellow; z-index: 200;">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                                <ul class="navbar-nav flex-grow-1" style="background:rgba(0,0,0,0.8); min-height:0px">
+                                    @if (User.IsInRole("Admin") || User.IsInRole("Member") || User.IsInRole("Leader"))
+                                    {
+                                        <li class="nav-item">
+                                            <a class="nav-link" style="color:#FFB90F;" asp-area="" asp-controller="Home" asp-action="Portal">Home</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link " style="color:#FFB90F;" asp-area="" asp-controller="Home" asp-action="About">About</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" style="color:#FFB90F;" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" style="color:#FFB90F;" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                                        </li>
+                                    }
+
+
+
+                                    <span class="reg">
+                                        @if (!(User.IsInRole("Admin") || User.IsInRole("Member") || User.IsInRole("Leader")))
+                                        {
+                                            <ul class="navbar-nav flex-grow-1" style="margin-top: -40px;">
+                                                <li class="nav-item">
+                                                    <a class="nav-link" style="color:#FFB90F;" asp-area="" asp-controller="Account" asp-action="Login">Sign In</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" style="color:#FFB90F; float:right;" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                                                </li>
+                                            </ul>
+                                        }
+                                        @if (User.IsInRole("Admin") || User.IsInRole("Member") || User.IsInRole("Leader"))
+                                        {
+                                            <ul class="">
+                                                <li class="nav-item">
+                                                    <a class="nav-link" style="color:#FFB90F" asp-area="" asp-controller="" asp-action="">Signed in as <span style="font-weight:bold">@User.Identity.Name</span></a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" style="color:#FFB90F;" asp-area="" asp-controller="Account" asp-action="Logout">Sign Out</a>
+                                                </li>
+                                            </ul>
+                                        }
+                                    </span>
+                                    <span class="reg-responsive">
+                                        @if (!(User.IsInRole("Admin") || User.IsInRole("Member") || User.IsInRole("Leader")))
+                                        {
+                                            <ul class="navbar-nav flex-grow-1" style="margin-top: -40px;">
+                                                <li class="nav-item">
+                                                    <a class="nav-link" style="color:#FFB90F;" asp-area="" asp-controller="Account" asp-action="Login">Sign In</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" style="color:#FFB90F; float:right;" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                                                </li>
+                                            </ul>
+                                        }
+                                        @if (User.IsInRole("Admin") || User.IsInRole("Member") || User.IsInRole("Leader"))
+                                        {
+                                            <ul class="">
+                                                <li class="nav-item">
+                                                    <a class="nav-link" style="color:#FFB90F" asp-area="" asp-controller="" asp-action=""><i>Logged in as</i> <span style="font-weight:bold">@User.Identity.Name</span></a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" style="color:#FFB90F;" asp-area="" asp-controller="Account" asp-action="Logout">Sign Out</a>
+                                                </li>
+                                            </ul>
+                                        }
+                                    </span>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </header>
+                @*@if (IsSectionDefined("Sidebar"))
+        {
+            <div id="sidebar">
+                <p>Connect</p>
+                @RenderSection("Sidebar", required: false)
+            </div>
+        }*@
+                
+                <div class="container">
+                    <partial name="_CookieConsentPartial" />
+                    <main role="main" class="pb-3">
+                        @RenderBody()
+                    </main>
+                </div>
+                <footer class="footer">
+                    <div class="row">
+                        <div class="copyright col-lg-8 col-md-8 col-sm 12">
+                            &copy; 2019 - REPLIB Online | <a asp-controller="Home" asp-action="Portal">Home</a> | <a asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <ul class="social">
+                                <li><a href="https://www.facebook.com/replib.coventry" target="_blank"><span><i class="fab fa-facebook-f"></i></span></a></li>
+                                <li><a href="https://www.instagram.com/replibyouthuk/?hl=en" target="_blank"><span><i class="fab fa-instagram"></i></span></a></li>
+                                <li><a href="https://www.youtube.com/results?search_query=replib+birmingham" target="_blank"><span><i class="fab fa-youtube"></i></span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+
+            <environment include="Development">
+                <script src="~/lib/jquery/dist/jquery.js"></script>
+                <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+            </environment>
+            <environment exclude="Development">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+                        asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                        asp-fallback-test="window.jQuery"
+                        crossorigin="anonymous"
+                        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
+                </script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+                        asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+                        asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                        crossorigin="anonymous"
+                        integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
+                </script>
+            </environment>
+            <script src="~/js/site.js" asp-append-version="true"></script>
+
+            @RenderSection("Scripts", required: false)
+        </body>
+        </html>

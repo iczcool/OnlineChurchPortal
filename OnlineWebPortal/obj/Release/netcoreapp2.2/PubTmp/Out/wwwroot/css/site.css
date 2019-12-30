@@ -1,0 +1,385 @@
+﻿
+h1, h3 {
+    text-align: center;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    color: #555555;
+}
+
+body {
+    background: url('/img/footer.png');
+    background-position: 50% 100%;
+    background-size: 80% 50%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width: 100%;
+    min-height: 300px;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    position: relative;
+    background: rgba(255,255,255,0.5);
+    background: rgba(220,220,220,0.9);
+    width: 80%;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 0;
+    color: #838B83;
+}
+
+
+
+header {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.9);
+    width: 80%;
+    height: 80px;
+    top: 0;
+    margin: 0;
+    margin-bottom: 98px;
+    padding: 0;
+    color: gainsboro;
+    color: aqua;
+    line-height: 60px;
+    z-index: 100;
+}
+
+.navbar {
+    margin: 0;
+    padding: 0;
+}
+
+nav .container {
+    width: 100%;
+    border-style: none;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.navbar-nav {
+}
+
+nav .container li a {
+}
+
+.navbar-collapse a {
+}
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+    margin: 0 54px;
+}
+
+header .reg {
+    position: absolute;
+    right: 0;
+    margin-right: 40px;
+}
+
+    header .reg ul {
+    }
+
+        header .reg ul li {
+            list-style: none;
+            display: inline-block;
+        }
+
+        .reg-responsive{
+            display:none;
+        }
+
+
+.container .pb-3 {
+    position: relative;
+    background: transparent;
+    width: 100%;
+    min-height: 90vh;
+    margin: 0;
+    padding: 0 10%;
+    padding-top: 120px;
+    z-index: 98;
+}
+
+
+
+
+
+
+
+
+
+
+footer {
+    position: relative;
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    min-height: 80px;
+    bottom: 0;
+    margin: 0;
+    padding: 0px 60px;
+    line-height: 80px;
+    color: gainsboro;
+    z-index: 99;
+}
+
+    footer .footer-wrapper {
+    }
+
+.footer ul {
+    text-align: right;
+}
+
+.footer li {
+    list-style: none;
+    display: inline-block;
+    font-size: 1.6em;
+    margin: 0 6px;
+    padding: 0;
+}
+.footer .row .copyright{
+    font-size:0.8em;
+}
+.footer .row .copyright a {
+    color: gainsboro;
+    text-decoration: none;
+}
+
+
+footer .social i {
+    background: #d2691e;
+    background: rgba(220,220,220,0.9);
+    width: 38px;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 0.6em;
+    color: #000000;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {
+    .wrapper {
+        position: relative;
+        background: rgba(255,255,255,0.5);
+        background: rgba(220,220,220,0.9);
+        width: 100%;
+        min-height: 100vh;
+        margin: 0 auto;
+        padding: 0;
+        color: #838B83;
+    }
+
+
+
+    header {
+        position: fixed;
+        background: rgba(0, 0, 0, 0.9);
+        width: 100%;
+        height: 80px;
+        top: 0;
+        margin: 0;
+        margin-bottom: 98px;
+        padding: 0;
+        color: gainsboro;
+        color: aqua;
+        line-height: 60px;
+        z-index: 100;
+    }
+    
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .reg{
+        display:none;
+    }
+    .reg-responsive{
+        position:absolute;
+        display:block;
+        width:60%;
+        height:40px;
+        margin:0;
+        padding:0;
+        top: 35px;
+        right:0;
+
+        text-align:right;
+    }
+    .reg-responsive li {
+        display:inline-block;
+        height:40px;
+        line-height:10px;
+        font-size:0.8em;
+    }
+
+    .container .pb-3 {
+        position: relative;
+        background: transparent;
+        /*background: blue;*/
+        width: 100%;
+        min-height: 90vh;
+        margin: 0;
+        padding: 0 10%;
+        padding-top: 120px;
+        z-index: 98;
+    }
+
+
+
+    footer {
+        position: relative;
+        background: rgba(0, 0, 0, 0.6);
+        width: 100%;
+        bottom: 0;
+        margin: 0;
+        padding: 0px 60px;
+        line-height: 80px;
+        line-height:40px;
+        color: gainsboro;
+        z-index: 99;
+    }
+
+    .footer li {
+        list-style: none;
+        display: inline-block;
+        font-size: 1.6em;
+        margin: 0 6px;
+        padding: 0;
+    }
+    .footer .row .copyright {
+        font-size: 0.8em;
+    }
+    .footer .row .copyright a {
+        color: gainsboro;
+        text-decoration: none;
+        
+    }
+
+
+    footer .social i {
+        background: rgba(220,220,220,0.9);
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 50%;
+        font-size: 0.4em;
+        color: #000000;
+    }
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .container .pb-3 {
+        position: relative;
+        width: 100%;
+        min-height: 90vh;
+        margin: 0;
+        padding: 0 10%;
+        padding-top: 120px;
+        z-index: 98;
+    }
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .container .pb-3 {
+        position: relative;
+        width: 100%;
+        min-height: 90vh;
+        margin: 0;
+        padding: 0 10%;
+        padding-top: 120px;
+        z-index: 98;
+    }
+}
+
+/*// Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+    .container .pb-3 {
+        position: relative;
+        width: 100%;
+        min-height: 90vh;
+        margin: 0;
+        padding: 0 10%;
+        padding-top: 120px;
+        z-index: 98;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 575px){}
+/*// Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+}
+
+/*// Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+}
+
+/*// Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+}
+
+/*// Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+}

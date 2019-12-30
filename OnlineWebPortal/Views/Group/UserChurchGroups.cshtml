@@ -1,0 +1,27 @@
+﻿@model IEnumerable<OnlineWebPortal.Models.RegUserChurchGroup>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+    <div class="content">
+        <h3>Your Groups</h3>
+        <div class="row">
+            <div class="col-6">
+                <ul>
+                    @foreach (var group in Model)
+                    {
+                        <li>@Html.DisplayFor(m => group.ChurchGroups.GroupName)</li>
+                    }
+                    @if (Model.Count() == 0)
+                    {
+                        <li><h4>You are not part of any group yet!</h4></li>
+                    }
+                </ul>
+            </div>
+        </div>
+
+        <hr />
+        <div class="content-nav">
+            <a asp-controller="Home" asp-action="Portal">Back to dashboard</a>
+        </div>
+    </div>
